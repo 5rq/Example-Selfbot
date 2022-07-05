@@ -11,8 +11,10 @@ bot = commands.Bot(command_prefix=prefix, self_bot=True)
 
 @bot.command()
 async def ping(ctx):
-     await ctx.send(f'{round(bot.latency * 1000)}ms')
+    await ctx.send(f'{round(bot.latency * 1000)}ms')
 
-
+@bot.event
+async def on_ready():
+    print(f'Running as {bot.user.name}#{bot.user.discriminator}')
 
 bot.run(token)
